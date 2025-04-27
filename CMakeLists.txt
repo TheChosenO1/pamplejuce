@@ -25,7 +25,7 @@ set(PROJECT_NAME "Pamplejuce")
 #   set(PROJECT_NAME "MyPlugin_v${MAJOR_VERSION}")
 # Doing so enables major versions to show up in IDEs and DAWs as separate plugins
 # allowing you to change parameters and behavior without breaking existing user projects
-set(PRODUCT_NAME "Pamplejuce Demo")
+set(PRODUCT_NAME "Sender")
 
 # Change me! Used for the MacOS bundle name and Installers
 set(COMPANY_NAME "Pamplejuce Company")
@@ -130,6 +130,15 @@ target_compile_definitions(SharedCode
     PRODUCT_NAME_WITHOUT_VERSION="Pamplejuce"
 )
 
+target_include_directories(${PROJECT_NAME}
+    PUBLIC "C:/Users/aarav/HSRN/corelink_audio_transport/corelink_client/cpp/include"
+    PUBLIC "C:/Users/aarav/HSRN/external-dependencies/cpp/asio-cpp/v1.24.0"
+    PUBLIC "C:/Users/aarav/HSRN/external-dependencies/cpp/cli11/v2.3.1"
+    PUBLIC "C:/Users/aarav/HSRN/external-dependencies/cpp"
+    PUBLIC "C:/Users/aarav/HSRN/external-dependencies/cpp/rapidjson"
+
+)
+
 # Link to any other modules you added (with juce_add_module) here!
 # Usually JUCE modules must have PRIVATE visibility
 # See https://github.com/juce-framework/JUCE/blob/master/docs/CMake%20API.md#juce_add_module
@@ -139,9 +148,19 @@ target_link_libraries(SharedCode
     INTERFACE
     Assets
     melatonin_inspector
+    juce_analytics
+    juce_animation
+    juce_audio_basics
+    juce_audio_devices
+    juce_audio_formats
+    juce_audio_plugin_client
     juce_audio_utils
     juce_audio_processors
+    juce_core
+    juce_data_structures
     juce_dsp
+    juce_events
+    juce_graphics
     juce_gui_basics
     juce_gui_extra
     juce::juce_recommended_config_flags
